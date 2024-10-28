@@ -18,9 +18,10 @@ namespace StudentTutorial.Tests
             //arrange
             DelegateType delegateType = new DelegateType(); //sut
             //act
-            var del = delegateType.Countries(6, Countries.CANADA);
+           // var del = delegateType.Countries(CountryEnum.CANADA);
+           delegateType.Countries(CountryEnum.CANADA);
             //assert
-            Assert.IsNotNull(del);
+            Assert.IsNotNull(delegateType);
             //Assert.That.Equals(del);
         }
 

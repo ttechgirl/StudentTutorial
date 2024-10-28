@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StudentTutorial
 {
-    public enum Countries
+    public enum CountryEnum
     {
         NIGERIA,
         GHANA,

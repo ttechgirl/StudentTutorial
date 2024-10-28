@@ -12,7 +12,7 @@ namespace StudentTutorial
         public static void ArrayLists()
         {
 
-            //Adding elements to ArrayList using Add() method
+            //Adding elements to ArrayList using Addition() method
             ArrayList arrayList1 = new ArrayList();
            
             arrayList1.Add(101);
