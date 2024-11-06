@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static StudentTutorial.Collection;
 using static StudentTutorial.DelegateType;
 
 namespace StudentTutorial
@@ -146,7 +147,7 @@ namespace StudentTutorial
 
         //Generic delegate with lamda expression =>
 
-        public void LamdaExp()
+        public static void LamdaExp()
         {
             //way 1 
             Func<int, int, double> Number1Delegate = (x, y) =>
@@ -161,6 +162,119 @@ namespace StudentTutorial
                 Console.WriteLine($"{name}");
             };
             lamdaDelegate.Invoke("Sheyi");
-        }
-    }
+
+            //
+            List<int> numbers = new List<int>() {6000,5,8,9,04,8,6000};
+             
+            if(numbers.Count > 0)
+            {
+                foreach(var items  in numbers)
+                {
+                    Console.WriteLine($"Lists of numbers are {items}");
+                }
+            }
+            else
+            {
+                Console.WriteLine($"No elements");
+            }
+
+            List<string> letters = new List<string>() { };
+            if (letters.Count > 0)
+            {
+                foreach (var items in letters)
+                {
+                    Console.WriteLine($"Lists of numbers are {items}");
+                }
+            }
+            else
+            {
+                Console.WriteLine($"No elements");
+            }
+
+            
+            //linq 
+            var num = numbers.Where(n => n.Equals(8)).FirstOrDefault();
+            var firstNumb = numbers.Select(u => u).FirstOrDefault();
+            var lastNumb = numbers.Select(y => y).LastOrDefault();
+            var lett = letters.Select(y => y).LastOrDefault();
+            Console.WriteLine($"First or default is :{num}");
+            Console.WriteLine($"First or default number selected :{firstNumb}");
+            Console.WriteLine($"Last or default number selected :{lastNumb}");
+            Console.WriteLine($"Last letter selected :{lett}");
+
+            var numList = numbers.Where(x => x.Equals(8)).ToList();
+            foreach (var item in numList)
+            {
+                Console.WriteLine($"List is :{item}");
+            }
+        }
+
+        public static void DataSeeding()
+        {
+            //seeding data 
+            List<Employee> employees = new List<Employee>()
+            {
+               new Employee() {
+                   Id = 1 ,
+                   FirstName = "Shazy",
+                   LastName = "Dev",
+                   Gender = 'F',
+                   JobRole = "Software Engineer",
+                   IsActive = true,
+               },
+               new Employee() {
+                   Id = 2,
+                   FirstName = "Victoria",
+                   LastName = "Adedoyin",
+                   Gender = 'F',
+                   JobRole = "Engineer Intern",
+                   IsActive = true,
+               },
+               new Employee() {
+                   Id = 3,
+                   FirstName = "Adeola",
+                   LastName = "Mustapha",
+                   Gender = 'F',
+                   JobRole = "Customer Service",
+                   IsActive = true,
+               },
+                new Employee() {
+                   Id = 4,
+                   FirstName = "Sola",
+                   LastName = "Jakande",
+                   Gender = 'M',
+                   JobRole = "HR",
+                   IsActive = false,
+               },
+            };
+
+            //filtering using anonymous type 
+            var result = employees.Select(e => new
+            {
+                e.Id,
+                e.FirstName,
+                e.LastName,
+                e.Gender,
+                e.JobRole,
+                e.IsActive
+            }).ToList();
+            foreach (var emp in result)
+            {
+                Console.WriteLine(emp);
+            }
+
+            Console.WriteLine("GetResult:=============");
+            var getResult = result.Where(x => x.Gender == 'F').FirstOrDefault();
+            Console.WriteLine(getResult);
+
+            Console.WriteLine("GetResults :=============");
+
+            var getResults = result.Where(x=> !x.IsActive).ToList();
+            foreach (var emp in getResults)
+            {
+                Console.WriteLine(emp);
+            }
+
+        }
+    }
 }
